@@ -8,7 +8,7 @@ app.use(express.static('client'))
 const cors_app = require('cors');
 app.use(cors_app());
 
-console.log(process.env.API_KEY);
+
 
 function getNLUInstance(){
     const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
@@ -23,11 +23,11 @@ function getNLUInstance(){
     });
     return naturalLanguageUnderstanding;  
 }
-//app.get("/",(req,res)=>{
-   // res.render('index.html');
-  //});
+app.get("/",(req,res)=>{
+    res.render('index.html');
+});
 
-  app.get("/url/emotion", (req,res) => {
+app.get("/url/emotion", (req,res) => {
     let urlToAnalyze = req.query.url
     const analyzeParams = 
     {
